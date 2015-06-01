@@ -120,7 +120,7 @@ NOTES:
  *   Rating: 1
  */
 int bitAnd(int x, int y) {
-  return 2;
+  return ~((~x)|(~y));
 }
 /* 
  * bitXor - x^y using only ~ and & 
@@ -130,7 +130,11 @@ int bitAnd(int x, int y) {
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  return 2;
+    int a=~(x&y);
+    int b=~(x&a);
+    int c=~(y&a);
+    int d=~(b&c);
+    return d;
 }
 /* 
  * thirdBits - return word with every third bit (starting from the LSB) set to 1
@@ -140,7 +144,12 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int thirdBits(void) {
-  return 2;
+    int temp6=0x9;
+    int temp12=temp6|temp6<<6;
+    int temp24=temp12|temp12<<12;
+    int temp30=temp24<<6|temp6;
+    int temp32=1<<30|temp30;
+    return temp32;
 }
 // Rating: 2
 /* 
@@ -153,7 +162,10 @@ int thirdBits(void) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-  return 2;
+	int temp;
+	int c=33+(~n);
+	temp=!(((x<<c)>>c)^x);
+    return temp;
 }
 /* 
  * sign - return 1 if positive, 0 if zero, and -1 if negative
@@ -164,7 +176,9 @@ int fitsBits(int x, int n) {
  *  Rating: 2
  */
 int sign(int x) {
-  return 2;
+	//int isNegative =  x>>31;
+	int result     =  (!(!x))|(x>>31);    
+	return result;
 }
 /* 
  * getByte - Extract byte n from word x
@@ -175,7 +189,8 @@ int sign(int x) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-  return 2;
+	int result=(x>>(n<<3))&0xff;
+  return result;
 }
 // Rating: 3
 /* 
