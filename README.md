@@ -59,6 +59,7 @@ lab0是一个热身项目，旨在测试环境是否配置正确以进行接下�
         }
 ### int get_cache_size(int size) 
 对于每个可能的Cache的大小，访问Cache中的每个块，再额外访问可能引起地址0被替换的块，然后检测地址0是否还在Cache中，如果不在则我们找到了Cache的大小。
+
     int get_cache_size(int size) {
       /* YOUR CODE GOES HERE */
     	int possible_cache_size;    
@@ -78,4 +79,26 @@ lab0是一个热身项目，旨在测试环境是否配置正确以进行接下�
     	return possible_cache_size;
       //return -1;
     }
+    
+### int get_cache_assoc(int size) 
+考虑大小为8的Cache。如果(2,miss)(10,miss)(2,hit)(18,miss)(2,hit)(10,miss)则意味着Cache为2路组相连，而(2,miss)(10,miss)(2,miss)意味着映射方式为直接映射。因此判断映射方式只需要看一个块在第几次被替换掉。这个函数也只需要Cache的大小一个参数，无需知道block的大小。
+
+        int get_cache_assoc(int size) {
+          /* YOUR CODE GOES HERE */
+        	int i,j;
+        	for(i=0;;i+=size)
+        	{
+        		flush_cache();
+        		access_cache(0);
+        		for(j=0;j<=i;j+=size)
+        		{
+        			access_cache(j);
+        		}
+        		if(!access_cache(0))
+        		{
+        			return i/size;
+        		}
+        	}
+        	return -1;
+        }
 ##lab5
