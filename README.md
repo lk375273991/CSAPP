@@ -58,7 +58,7 @@ lab0是一个热身项目，旨在测试环境是否配置正确以进行接下�
         	return i;
         }
 ### int get_cache_size(int size) 
-
+对于每个可能的Cache的大小，访问Cache中的每个块，再额外访问可能引起地址0被替换的块，然后检测地址0是否还在Cache中，如果不在则我们找到了Cache的大小。
     int get_cache_size(int size) {
       /* YOUR CODE GOES HERE */
     	int possible_cache_size;    
