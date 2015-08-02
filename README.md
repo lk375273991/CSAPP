@@ -6,8 +6,10 @@ This is based mooc The Hardware/Software Interface(https://class.coursera.org/hw
   <p>目前完成的实验有lab2 lab4，lab1 部分完成，剩下lab3 lab5未完成。
 
 ##lab0
+lab0是一个热身项目，旨在测试环境是否配置正确以进行接下来的几个实验。同时展示了Linux下如何使用gcc来执行C程序。
 ##lab1
 ##lab2
 ##lab3
 ##lab4
+
 ##lab5
